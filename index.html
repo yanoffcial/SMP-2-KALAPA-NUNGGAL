@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portofolio Yana Suryana - Developer Website, APK, dan AI dari SMPN 2 Kalapa Nunggal">
+    <meta name="keywords" content="Yana Suryana, web developer, app developer, AI developer, SMPN 2 Kalapa Nunggal">
+    <title>Yana Suryana - Developer & AI Creator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --neon-blue: #00f3ff;
+            --neon-purple: #b900ff;
+            --neon-pink: #ff006e;
+            --dark-bg: #0a0a0f;
+            --card-bg: rgba(20, 20, 30, 0.8);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--dark-bg);
+            color: #ffffff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Animasi Bintang Jatuh */
+        #stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        .shooting-star {
+            position: absolute;
+            width: 2px;
+            height: 80px;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+            animation: shoot 3s linear infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes shoot {
+            0% {
+                transform: translateX(0) translateY(0) rotate(45deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(-500px) translateY(500px) rotate(45deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Header Hero */
+        header {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            background: radial-gradient(ellipse at center, rgba(0, 243, 255, 0.1) 0%, transparent 70%);
+        }
+
+        .hero-content {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .profile-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin-bottom: 2rem;
+            border: 4px solid var(--neon-blue);
+            box-shadow: 0 0 30px var(--neon-blue);
+            object-fit: cover;
+            animation: fadeInUp 1s ease-out 0.2s backwards;
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease-out 0.4s backwards;
+        }
+
+        .school-name {
+            font-size: 1.5rem;
+            color: var(--neon-blue);
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+            animation: fadeInUp 1s ease-out 0.6s backwards;
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            margin: 2rem 0;
+            max-width: 700px;
+            line-height: 1.8;
+            color: #ddd;
+            animation: fadeInUp 1s ease-out 0.8s backwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            margin: 10px;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 243, 255, 0.4);
+            animation: fadeInUp 1s ease-out 1s backwards;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 243, 255, 0.6);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 100px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* About Section */
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 243, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .about-content p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: #ddd;
+        }
+
+        .about-content ul {
+            font-size: 1.1rem;
+            line-height: 1.9;
+        }
+
+        .about-content ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .teacher-mention {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(0, 243, 255, 0.1);
+            border-left: 4px solid var(--neon-blue);
+            border-radius: 10px;
+        }
+
+        .teacher-mention strong {
+            color: var(--neon-blue);
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--neon-blue);
+            box-shadow: 0 10px 40px rgba(0, 243, 255, 0.3);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 220px;
+            background: linear-gradient(135deg, rgba(0, 243, 255, 0.2), rgba(185, 0, 255, 0.2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--neon-blue);
+        }
+
+        .project-description {
+            color: #bbb;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .project-link {
+            display: inline-block;
+            padding: 10px 25px;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(0, 243, 255, 0.5);
+        }
+
+        /* YAN AI Section */
+        .yan-ai-intro {
+            max-width: 900px;
+            margin: 0 auto 3rem;
+            text-align: center;
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(185, 0, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .yan-ai-intro p {
+            font-size: 1.2rem;
+            color: #ddd;
+            margin-bottom: 1rem;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(255, 165, 0, 0.2);
+            border: 1px solid orange;
+            border-radius: 20px;
+            color: orange;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        .tools-category {
+            margin-bottom: 3rem;
+        }
+
+        .category-title {
+            font-size: 2rem;
+            color: var(--neon-purple);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tools-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .tool-item {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(185, 0, 255, 0.2);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .tool-item:hover {
+            border-color: var(--neon-purple);
+            transform: translateX(10px);
+            box-shadow: 0 5px 20px rgba(185, 0, 255, 0.3);
+        }
+
+        .tool-name {
+            font-weight: bold;
+            color: var(--neon-blue);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .tool-description {
+            color: #bbb;
+            font-size: 0.95rem;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .contact-link {
+            padding: 15px 35px;
+            background: var(--card-bg);
+            border: 2px solid var(--neon-blue);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-link:hover {
+            background: var(--neon-blue);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 243, 255, 0.5);
+        }
+
+        .contact-form {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 243, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--neon-blue);
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 243, 255, 0.3);
+            border-radius: 10px;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 243, 255, 0.5);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(10, 10, 15, 0.95);
+            padding: 3rem 5%;
+            text-align: center;
+            border-top: 1px solid rgba(0, 243, 255, 0.3);
+        }
+
+        .footer-logo {
+            width: 120px;
+            height: auto;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-content p {
+            color: #bbb;
+            margin: 0.5rem 0;
+        }
+
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0, 243, 255, 0.2);
+            color: #888;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .school-name {
+                font-size: 1.2rem;
+            }
+
+            .tagline {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 60px 5%;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tools-list {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+
+        /* Scroll Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Bintang -->
+    <div id="stars-container"></div>
+
+    <!-- Header Hero -->
+    <header id="home">
+        <div class="hero-content">
+            <img src="https://via.placeholder.com/180" alt="Yana Suryana" class="profile-image">
+            <h1>YANA SURYANA</h1>
+            <p class="school-name">SMPN 2 KALAPA NUNGGAL</p>
+            <p class="tagline">Saya membuat website & APK — siap dipakai, cantik, dan cepat. Mari lihat apa yang sudah saya buat!</p>
+            <a href="#projects" class="cta-button">Lihat Karya</a>
+            <a href="#contact" class="cta-button">Hubungi Saya</a>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title fade-in">Tentang Saya</h2>
+        <div class="about-content fade-in">
+            <p>Halo! Saya Yana Suryana, siswa dari SMPN 2 Kalapa Nunggal yang passionate dalam dunia teknologi, khususnya web development, pembuatan aplikasi mobile, dan pengembangan kecerdasan buatan (AI). Sejak pertama kali mengenal coding, saya langsung jatuh cinta dengan kemampuan untuk mengubah ide menjadi sesuatu yang nyata dan bisa digunakan orang lain.</p>
+            
+            <p>Perjalanan saya di dunia teknologi dimulai dari rasa penasaran yang besar. Saya mulai belajar HTML, CSS, dan JavaScript secara otodidak, lalu berkembang ke pembuatan aplikasi Android dan eksplorasi AI. Setiap project yang saya kerjakan adalah hasil dari dedikasi, pembelajaran berkelanjutan, dan keinginan untuk terus berkembang.</p>
+            
+            <p>Website ini adalah showcase dari apa yang sudah saya pelajari dan buat. Di sini, Anda bisa melihat berbagai project website yang responsif dan modern, aplikasi mobile yang fungsional, serta eksperimen AI saya yang diberi nama YAN AI. Saya percaya bahwa teknologi harus mudah diakses, indah dipandang, dan tentunya berguna untuk memecahkan masalah nyata.</p>
+            
+            <p>Filosofi saya dalam coding sangat sederhana: buat sesuatu yang bukan hanya bekerja dengan baik, tapi juga memberikan pengalaman pengguna yang menyenangkan. Setiap baris kode yang saya tulis adalah upaya untuk menciptakan solusi yang elegan dan efisien.</p>
+
+            <p><strong>Skill & Keahlian Saya:</strong></p>
+            <ul style="color: #ddd; margin-left: 2rem; margin-top: 1rem;">
+                <li>💻 <strong>Web Development:</strong> HTML5, CSS3, JavaScript, Responsive Design, Tailwind CSS</li>
+                <li>📱 <strong>Mobile Development:</strong> Android App Development, UI/UX Design, APK Deployment</li>
+                <li>🤖 <strong>AI & Machine Learning:</strong> Chatbot Development, Natural Language Processing, AI Integration</li>
+                <li>🎨 <strong>Design:</strong> Modern UI/UX, Animation Effects, User Experience Optimization</li>
+                <li>🚀 <strong>Tools & Platform:</strong> Git, GitHub, VS Code, Android Studio, Web Hosting</li>
+            </ul>
+            
+            <div class="teacher-mention">
+                <p><strong>Guru TIK saya: Agung Cahya Gumilar</strong> — Beliau adalah pembimbing dan inspirasi dalam perjalanan saya mengeksplorasi dunia teknologi. Terima kasih atas bimbingan dan dukungannya yang tak ternilai!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="section-title fade-in">Karya & Project Saya</h2>
+        <div class="projects-grid">
+            <div class="project-card fade-in">
+                <div class="project-image">🌐</div>
+                <div class="project-content">
+                    <h3 class="project-title">Website Portfolio Modern</h3>
+                    <p class="project-description">Website portofolio responsif dengan desain modern dan animasi yang halus. Menggunakan HTML5, CSS3, dan JavaScript vanilla untuk performa optimal. Cocok untuk profesional, freelancer, atau siapa saja yang ingin showcase karya mereka dengan style!</p>
+                    <a href="#" target="_blank" class="project-link">Lihat Demo</a>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-image">📱</div>
+                <div class="project-content">
+                    <h3 class="project-title">Aplikasi Mobile Task Manager</h3>
+                    <p class="project-description">Aplikasi Android untuk manajemen tugas harian dengan interface yang intuitif dan fitur reminder. Dibuat menggunakan teknologi modern untuk pengalaman pengguna terbaik. Dilengkapi dengan notifikasi push, kategori tugas, dan sync data lokal.</p>
+                    <a href="#" target="_blank" class="project-link">Lihat Demo</a>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-image">🎨</div>
+                <div class="project-content">
+                    <h3 class="project-title">Landing Page Bisnis</h3>
+                    <p class="project-description">Landing page yang eye-catching untuk bisnis dengan animasi parallax, formulir kontak terintegrasi, dan optimasi SEO penuh. Siap untuk konversi tinggi! Design modern dengan loading speed yang super cepat dan mobile-first approach.</p>
+                    <a href="#" target="_blank" class="project-link">Lihat Demo</a>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-image">🤖</div>
+                <div class="project-content">
+                    <h3 class="project-title">Chatbot AI Sederhana</h3>
+                    <p class="project-description">Chatbot berbasis AI untuk menjawab pertanyaan umum. Menggunakan machine learning untuk memahami konteks dan memberikan respons yang relevan. Perfect untuk customer service, FAQ automation, atau virtual assistant di website Anda.</p>
+                    <a href="#" target="_blank" class="project-link">Coba Sekarang</a>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-image">🎮</div>
+                <div class="project-content">
+                    <h3 class="project-title">Game Edukasi Interaktif</h3>
+                    <p class="project-description">Game berbasis web untuk pembelajaran yang fun! Menggabungkan edukasi dengan entertainment untuk membuat belajar jadi lebih menyenangkan. Features: multiple levels, scoring system, dan progress tracking untuk motivasi belajar yang lebih baik.</p>
+                    <a href="#" target="_blank" class="project-link">mainkan</a>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-image">📊</div>
+                <div class="project-content">
+                    <h3 class="project-title">Dashboard Analytics</h3>
+                    <p class="project-description">Dashboard visualisasi data dengan grafik interaktif dan real-time update. Perfect untuk monitoring dan analisis data bisnis atau project. Dilengkapi dengan export data, custom date range, dan berbagai jenis chart untuk insights yang lebih dalam.</p>
+                    <a href="#" target="_blank" class="project-link">Lihat Demo</a>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-image">🛒</div>
+                <div class="project-content">
+                    <h3 class="project-title">E-Commerce Website</h3>
+                    <p class="project-description">Platform e-commerce lengkap dengan shopping cart, payment gateway integration, dan admin panel. Design yang clean dan user-friendly untuk meningkatkan conversion rate. Includes: product management, order tracking, dan customer dashboard.</p>
+                    <a href="#" target="_blank" class="project-link">Lihat Demo</a>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-image">📝</div>
+                <div class="project-content">
+                    <h3 class="project-title">Sistem Manajemen Sekolah</h3>
+                    <p class="project-description">Aplikasi web untuk manajemen data siswa, guru, dan nilai. Memudahkan administrasi sekolah dengan fitur lengkap: absensi online, rapor digital, komunikasi guru-orangtua, dan banyak lagi. Efisien dan mudah digunakan!</p>
+                    <a href="#" target="_blank" class="project-link">Lihat Demo</a>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-image">🎥</div>
+                <div class="project-content">
+                    <h3 class="project-title">Video Streaming Platform</h3>
+                    <p class="project-description">Platform streaming video dengan player yang smooth dan responsive. Support untuk live streaming dan video on-demand. Cocok untuk education platform, webinar, atau content creators. Features: playlist, watch history, dan quality selector.</p>
+                    <a href="#" target="_blank" class="project-link">Lihat Demo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- YAN AI Section -->
+    <section id="yan-ai">
+        <h2 class="section-title fade-in">YAN AI — AI Tools Suite</h2>
+        
+        <div class="yan-ai-intro fade-in">
+            <p>Saya juga sedang mengembangkan suite AI tools bernama <strong>YAN AI</strong>. Ini adalah koleksi alat kecerdasan buatan yang saya rancang untuk membantu berbagai keperluan — dari riset mendalam, pembuatan konten, hingga analisis data. YAN AI masih dalam tahap pengembangan dan terus saya tingkatkan fitur-fiturnya.</p>
+            <p>YAN AI bukan hanya sekedar chatbot biasa. Ini adalah ekosistem tools AI yang komprehensif, dirancang untuk produktivitas maksimal. Berikut adalah tools yang tersedia:</p>
+            <span class="status-badge">⚠️ Masih Uji Coba</span>
+        </div>
+
+        <!-- Premium Suite -->
+        <div class="tools-category fade-in">
+            <h3 class="category-title">🔥 PREMIUM SUITE</h3>
+            <div class="tools-list">
+                <div class="tool-item">
+                    <div class="tool-name">NEXUS Deep Research</div>
+                    <div class="tool-description">Alat riset mendalam yang mengumpulkan data dari berbagai sumber dan menyusunnya menjadi referensi terstruktur.</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-name">Cinema Director AI</div>
+                    <div class="tool-description">Bantu konsep video dan buat storyboard profesional untuk project film atau konten multimedia Anda.</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-name">CEREBRAL Neural Fixer</div>
+                    <div class="tool-description">Optimasi model AI untuk performa maksimal dengan memperbaiki dan menyempurnakan neural network.</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-name">NOVA App Architect</div>
+                    <div class="tool-description">Rancang struktur aplikasi dengan arsitektur yang solid dan scalable untuk project development Anda.</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-name">AEGIS Legal Guardian</div>
+                    <div class="tool-description">Cek dokumen dan analisis aspek legal sederhana untuk memastikan kepatuhan dan keamanan.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- General AI -->
+        <div class="tools-category fade-in">
+            <h3 class="category-title">🤖 GENERAL AI</h3>
+            <div class="tools-list">
+                <div class="tool-item">
+                    <div class="tool-name">AI Assistant</div>
+                    <div class="tool-description">Asisten AI umum yang siap menjawab berbagai pertanyaan dan membantu tugas sehari-hari Anda.</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-name">Live Conversation</div>
+                    <div class="tool-description">Chat real-time dengan bot AI untuk diskusi interaktif dan responsif.</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-name">Stealth Scholar (Anti-AI)</div>
+                    <div class="tool-description">Alat bantu belajar dengan sistem anti-plagiarisme untuk memastikan keaslian karya.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Creation -->
+        <div class="tools-category fade-in">
+            <h3 class="category-title">✍️ CONTENT CREATION</h3>
+            <div class="tools-list">
+                <div class="tool-item">
+                    <div class="tool-name">Script Writer Pro</div>
+                    <div class="tool-description">Buat script untuk video, podcast, atau presentasi dengan struktur yang engaging.</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-name">Article Generator</div>
+                    <div class="tool-description">Generate artikel berkualitas dengan SEO-friendly dan natural language.</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-name">Social Media Wizard</div>
+                    <div class="tool-description">Buat konten media sosial yang menarik dan optimized untuk berbagai platform.</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-name">Email Composer</div>
+                    <div class="tool-description">Tulis email profesional dengan tone yang tepat untuk berbagai situasi bisnis.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Code & Development -->
+        <div class="tools-category fade-in">
+            <h3 class="category-title">💻 CODE & DEVELOPMENT</h3>
+            <div class="tools-list">
+                <div class="tool-item">
+                    <div class="tool-name">Code Generator</div>
+                    <div class="tool-description">Generate kode untuk berbagai bahasa pemrograman dengan clean code dan best practices.</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-name">Bug Detector</div>
+                    <div class="tool-description">Deteksi dan analisis bug dalam kode Anda dengan saran perbaikan yang jelas.</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-name">API Designer</div>
+                    <div class="tool-description">Rancang REST API dengan struktur yang optimal dan dokumentasi lengkap.</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-name">Database Architect</div>
+                    <div class="tool-description">Design skema database yang efisien dengan normalisasi yang tepat.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Analysis & Research -->
+        <div class="tools-category fade-in">
+            <h3 class="category-title">📊 ANALYSIS & RESEARCH</h3>
+            <div class="tools-list">
+                <div class="tool-item">
+                    <div class="tool-name">Data Analyzer</div>
+                    <div class="tool-description">Analisis data kompleks dan dapatkan insights yang actionable untuk decision making.</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-name">Market Researcher</div>
+                    <div class="tool-description">Research pasar dan competitor analysis untuk strategi bisnis yang lebih baik.</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-name">Trend Predictor</div>
+                    <div class="tool-description">Prediksi trend dan pola dari data historis untuk perencanaan kedepan.</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-name">Report Generator</div>
+                    <div class="tool-description">Generate laporan komprehensif dengan visualisasi data yang menarik.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Learning & Education -->
+        <div class="tools-category fade-in">
+            <h3 class="category-title">📚 LEARNING & EDUCATION</h3>
+            <div class="tools-list">
+                <div class="tool-item">
+                    <div class="tool-name">Study Planner</div>
+                    <div class="tool-description">Buat jadwal belajar yang efektif dan terorganisir sesuai dengan target dan deadline Anda.</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-name">Quiz Generator</div>
+                    <div class="tool-description">Buat kuis dan soal latihan otomatis dari materi pelajaran untuk evaluasi belajar.</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-name">Concept Explainer</div>
+                    <div class="tool-description">Jelaskan konsep rumit dengan bahasa sederhana dan contoh yang mudah dipahami.</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-name">Homework Helper</div>
+                    <div class="tool-description">Bantu selesaikan PR dengan panduan step-by-step tanpa memberikan jawaban langsung.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Creative Tools -->
+        <div class="tools-category fade-in">
+            <h3 class="category-title">🎨 CREATIVE TOOLS</h3>
+            <div class="tools-list">
+                <div class="tool-item">
+                    <div class="tool-name">Story Generator</div>
+                    <div class="tool-description">Buat cerita kreatif dengan plot menarik dan karakter yang berkembang.</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-name">Poem Composer</div>
+                    <div class="tool-description">Tulis puisi dengan berbagai gaya dan tema sesuai keinginan Anda.</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-name">Brand Name Creator</div>
+                    <div class="tool-description">Generate nama brand yang unik dan memorable untuk bisnis atau project Anda.</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-name">Slogan Maker</div>
+                    <div class="tool-description">Buat slogan dan tagline yang catchy untuk marketing campaign Anda.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Productivity -->
+        <div class="tools-category fade-in">
+            <h3 class="category-title">⚡ PRODUCTIVITY</h3>
+            <div class="tools-list">
+                <div class="tool-item">
+                    <div class="tool-name">Task Organizer</div>
+                    <div class="tool-description">Organisir tugas dan prioritaskan pekerjaan untuk produktivitas maksimal.</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-name">Meeting Summarizer</div>
+                    <div class="tool-description">Rangkum hasil meeting menjadi action items yang jelas dan terstruktur.</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-name">Document Scanner</div>
+                    <div class="tool-description">Extract informasi penting dari dokumen panjang dengan cepat dan akurat.</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-name">Time Optimizer</div>
+                    <div class="tool-description">Analisis penggunaan waktu dan berikan rekomendasi untuk efisiensi lebih baik.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Language Tools -->
+        <div class="tools-category fade-in">
+            <h3 class="category-title">🌍 LANGUAGE TOOLS</h3>
+            <div class="tools-list">
+                <div class="tool-item">
+                    <div class="tool-name">Translator Pro</div>
+                    <div class="tool-description">Terjemahkan teks ke berbagai bahasa dengan akurasi tinggi dan konteks yang tepat.</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-name">Grammar Checker</div>
+                    <div class="tool-description">Periksa grammar dan ejaan dengan saran perbaikan yang detail.</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-name">Paraphraser</div>
+                    <div class="tool-description">Ubah kalimat dengan tetap mempertahankan makna untuk variasi penulisan.</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-name">Tone Adjuster</div>
+                    <div class="tool-description">Sesuaikan tone tulisan dari formal ke casual atau sebaliknya sesuai kebutuhan.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="yan-ai-intro fade-in" style="margin-top: 3rem;">
+            <p><strong>Tertarik mencoba YAN AI?</strong></p>
+            <p>Join channel Telegram saya untuk update terbaru dan akses early access ke tools yang sedang dikembangkan!</p>
+            <a href="#" target="_blank" class="cta-button">Join Telegram Channel</a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title fade-in">Hubungi Saya</h2>
+        
+        <div class="contact-content">
+            <!-- Services Info Box -->
+            <div class="yan-ai-intro fade-in" style="margin-bottom: 3rem;">
+                <h3 style="color: var(--neon-blue); font-size: 1.8rem; margin-bottom: 1rem;">💼 Butuh Jasa Pembuatan Website atau Aplikasi?</h3>
+                <p style="font-size: 1.15rem; margin-bottom: 1rem;">Saya menerima jasa pembuatan website profesional, aplikasi mobile (APK), dan solusi AI custom untuk bisnis, organisasi, atau kebutuhan personal Anda!</p>
+                
+                <div style="text-align: left; max-width: 700px; margin: 1.5rem auto;">
+                    <p style="font-size: 1.05rem; margin-bottom: 0.8rem;"><strong style="color: var(--neon-blue);">✅ Yang Saya Tawarkan:</strong></p>
+                    <ul style="list-style: none; padding: 0; margin-left: 1rem;">
+                        <li style="margin-bottom: 0.5rem;">🌐 <strong>Website Bisnis & Portfolio</strong> - Responsif, modern, SEO-optimized</li>
+                        <li style="margin-bottom: 0.5rem;">📱 <strong>Aplikasi Mobile Android</strong> - Fungsional dan user-friendly</li>
+                        <li style="margin-bottom: 0.5rem;">🤖 <strong>Chatbot & AI Integration</strong> - Smart solutions untuk bisnis</li>
+                        <li style="margin-bottom: 0.5rem;">🎨 <strong>Landing Page</strong> - High conversion design</li>
+                        <li style="margin-bottom: 0.5rem;">🛠️ <strong>Custom Development</strong> - Sesuai kebutuhan spesifik Anda</li>
+                    </ul>
+                </div>
+
+                <p style="font-size: 1.15rem; margin-top: 1.5rem; font-weight: bold; color: var(--neon-blue);">
+                    📧 Hubungi email saya untuk diskusi project dan quotation!
+                </p>
+            </div>
+
+            <div class="contact-links fade-in">
+                <a href="mailto yanoffcial040@gmail.com" class="contact-link">
+                    <span>📧</span> yanoffcial040@gmail.com
+                </a>
+                <a href="https://t.me/yanAItele_bot" target="_blank" class="contact-link">
+                    <span>📱</span> Telegram
+                </a>
+                <a href="https://github.com/yanoffcial" target="_blank" class="contact-link">
+                    <span>💻</span> GitHub
+                </a>
+                <a href="https://wa.me/6281220634407" target="_blank" class="contact-link">
+                    <span>💬</span> WhatsApp
+                </a>
+            </div>
+
+            <div class="contact-form fade-in">
+                <h3 style="color: var(--neon-blue); text-align: center; margin-bottom: 1.5rem; font-size: 1.5rem;">Atau Kirim Pesan Langsung</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Nama Anda</label>
+                        <input type="text" id="name" name="name" placeholder="Masukkan nama lengkap" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="email@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subjek</label>
+                        <input type="text" id="subject" name="subject" placeholder="Jasa pembuatan website / Konsultasi project / dll" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Pesan</label>
+                        <textarea id="message" name="message" placeholder="Ceritakan detail project atau pertanyaan Anda di sini..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">Kirim Pesan</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+ 
+            <p><strong>SMPN 2 KALAPA NUNGGAL</strong></p>
+            <p>Membentuk Generasi Unggul di Era Digital</p>
+            
+            <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(0, 243, 255, 0.2);">
+                <p style="color: var(--neon-blue); font-size: 1.1rem; margin-bottom: 1rem;"><strong>📞 Kontak Langsung</strong></p>
+                <p style="color: #bbb;">Email: <a href="mailto:yanasuryana@example.com" style="color: var(--neon-blue); text-decoration: none;">yanoffcial040@gmail.com</a></p>
+                <p style="color: #bbb;">Telegram: <a href="https://t.me/Yanzz018" target="_blank" style="color: var(--neon-blue); text-decoration: none;">@yanofficial</a></p>
+                <p style="color: #bbb; margin-top: 1rem; font-size: 0.95rem;">💼 <em>Menerima jasa pembuatan website, aplikasi mobile, dan solusi AI</em></p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Yana Suryana — SMPN 2 Kalapa Nunggal</p>
+            <p>Dibuat dengan ❤️ dan Tekad untuk Terus Berkembang </p>
+        </div>
+    </footer>
+
+    <script>
+        // Generate Stars
+        function createStars() {
+            const container = document.getElementById('stars-container');
+            const starCount = 200;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.opacity = Math.random() * 0.7 + 0.3;
+                container.appendChild(star);
+            }
+        }
+
+        // Create Shooting Stars
+        function createShootingStar() {
+            const container = document.getElementById('stars-container');
+            const shootingStar = document.createElement('div');
+            shootingStar.className = 'shooting-star';
+            shootingStar.style.left = Math.random() * 100 + '%';
+            shootingStar.style.top = Math.random() * 50 + '%';
+            container.appendChild(shootingStar);
+            
+            setTimeout(() => {
+                shootingStar.remove();
+            }, 3000);
+        }
+
+        // Scroll Animation Observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Terima kasih! Pesan Anda telah dikirim. Saya akan segera menghubungi Anda kembali.');
+            this.reset();
+        });
+
+        // Initialize
+        createStars();
+        setInterval(createShootingStar, 2000);
+
+        // Parallax Effect on Scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const stars = document.querySelectorAll('.star');
+            stars.forEach((star, index) => {
+                const speed = (index % 3 + 1) * 0.1;
+                star.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
